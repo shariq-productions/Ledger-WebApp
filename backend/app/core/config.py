@@ -15,7 +15,10 @@ class Settings(BaseSettings):
     API_V1_PREFIX: str = "/api/v1"
     
     # CORS
-    CORS_ORIGINS: list[str] = ["http://localhost:5173", "http://localhost:3000"]
+    CORS_ORIGINS: list[str] = [
+        "http://localhost:5173",
+        "https://ledger-webapp.vercel.app"
+    ]
     
     # JWT Auth
     JWT_SECRET_KEY: str = "ledger-app-secret-key-change-in-production"

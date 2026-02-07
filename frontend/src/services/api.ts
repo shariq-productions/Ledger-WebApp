@@ -5,7 +5,9 @@ import axios from 'axios';
 import type { Party, TransactionType, Transaction, OutstandingTotal } from '../types';
 import { getStoredToken, clearStoredToken } from '../utils/authStorage';
 
-const API_BASE_URL = '/api/v1';
+// const API_BASE_URL = '/api/v1';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 
 const api = axios.create({
   baseURL: API_BASE_URL,
