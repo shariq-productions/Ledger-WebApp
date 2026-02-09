@@ -11,12 +11,6 @@ import app.models.admin  # noqa: F401 - ensure Admin table is created
 # Create database tables
 Base.metadata.create_all(bind=engine)
 
-
-@app.on_event("startup")
-def on_startup():
-    Base.metadata.create_all(bind=engine)
-
-
 # Initialize FastAPI app
 app = FastAPI(
     title="Ledger Web Application API",
@@ -39,7 +33,10 @@ app.include_router(parties.router, prefix=settings.API_V1_PREFIX)
 app.include_router(transaction_types.router, prefix=settings.API_V1_PREFIX)
 app.include_router(transactions.router, prefix=settings.API_V1_PREFIX)
 
-
+@app.on_event("startup")
+def on_startup():
+    Base.metadata.create_all(bind=engine)
+    
 @app.get("/")
 def root():
     """Root endpoint"""
