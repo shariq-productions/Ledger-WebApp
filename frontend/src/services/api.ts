@@ -41,43 +41,43 @@ api.interceptors.response.use(
 export const authAPI = {
   login: (login_id: string, password: string) =>
     api.post<{ access_token: string; token_type: string; expires_in_hours: number }>(
-      '/auth/login',
+      'https://ledger-webapp.onrender.com/api/v1/auth/login',
       { login_id, password }
     ),
 };
 
 // Party APIs (trailing slashes to avoid 307 redirect - redirect drops Authorization header)
 export const partyAPI = {
-  getAll: () => api.get<Party[]>('/parties/'),
-  getById: (id: number) => api.get<Party>(`/parties/${id}`),
+  getAll: () => api.get<Party[]>('https://ledger-webapp.onrender.com/api/v1/parties/'),
+  getById: (id: number) => api.get<Party>(`/https://ledger-webapp.onrenderparties/${id}`),
   create: (data: Omit<Party, 'id' | 'created_at' | 'updated_at'>) => 
-    api.post<Party>('/parties/', data),
+    api.post<Party>('https://ledger-webapp.onrender.com/api/v1/parties/', data),
   update: (id: number, data: Partial<Party>) => 
-    api.put<Party>(`/parties/${id}`, data),
-  delete: (id: number) => api.delete(`/parties/${id}`),
-  search: (searchTerm: string) => api.get<Party[]>(`/parties/search/${searchTerm}`),
+    api.put<Party>(`/https://ledger-webapp.onrenderparties/${id}`, data),
+  search: (searchTerm: string) => api.get<Party[]>(`/https://ledger-webapp.onrenderparties/search/${searchTerm}`),
+  delete: (id: number) => api.delete(`https://ledger-webapp.onrender.com/api/v1/parties/${id}`),
 };
 
 // Transaction Type APIs
 export const transactionTypeAPI = {
   getAll: () => api.get<TransactionType[]>('/transaction-types/'),
-  getById: (id: number) => api.get<TransactionType>(`/transaction-types/${id}`),
+  getById: (id: number) => api.get<TransactionType>(`/https://ledger-webapp.onrendertransaction-types/${id}`),
   create: (data: Omit<TransactionType, 'id' | 'created_at' | 'updated_at'>) => 
     api.post<TransactionType>('/transaction-types/', data),
   update: (id: number, data: Partial<TransactionType>) => 
-    api.put<TransactionType>(`/transaction-types/${id}`, data),
-  delete: (id: number) => api.delete(`/transaction-types/${id}`),
+    api.put<TransactionType>(`/https://ledger-webapp.onrendertransaction-types/${id}`, data),
+  delete: (id: number) => api.delete(`https://ledger-webapp.onrender.com/api/v1/transaction-types/${id}`),
 };
 
 // Transaction APIs
 export const transactionAPI = {
   getAll: (params?: { party_filter?: string; date_start?: string; date_end?: string }) => 
-    api.get<Transaction[]>('/transactions/', { params }),
-  getById: (id: number) => api.get<Transaction>(`/transactions/${id}`),
+    api.get<Transaction[]>('https://ledger-webapp.onrender.com/api/v1/transactions/', { params }),
+  getById: (id: number) => api.get<Transaction>(`/https://ledger-webapp.onrendertransactions/${id}`),
   create: (data: Omit<Transaction, 'id' | 'serial_number' | 'created_at' | 'updated_at'>) => 
     api.post<Transaction>('/transactions/', data),
   update: (id: number, data: Partial<Transaction>) => 
-    api.put<Transaction>(`/transactions/${id}`, data),
+    api.put<Transaction>(`/https://ledger-webapp.onrendertransactions/${id}`, data),
   delete: (id: number) => api.delete(`/transactions/${id}`),
   getOutstandingTotal: (params?: { party_filter?: string; date_end?: string }) =>
     api.get<OutstandingTotal>('/transactions/outstanding/total', { params }),

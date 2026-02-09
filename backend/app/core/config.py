@@ -17,7 +17,8 @@ class Settings(BaseSettings):
     # CORS
     CORS_ORIGINS: list[str] = [
         "http://localhost:5173",
-        "https://ledger-webapp.vercel.app"
+        "https://ledger-webapp.vercel.app",
+        "https://ledger-webapp.onrender.com/api/v1/"
     ]
     
     # JWT Auth
