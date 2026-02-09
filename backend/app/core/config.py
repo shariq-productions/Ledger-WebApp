@@ -9,12 +9,12 @@ import os
 class Settings(BaseSettings):
     """Application settings"""
     
-    DATABASE_URL = os.getenv("DATABASE_URL")
+    DATABASE_URL = "postgresql://ledger_db_qfgn_user:yS4eB9el29ypopyZm59vy2ssPUzODkyQ@dpg-d655hkp4tr6s73867m4g-a.oregon-postgres.render.com/ledger_db_qfgn"
 
-    if DATABASE_URL.startswith("postgresql://"):
-        DATABASE_URL = DATABASE_URL.replace(
-            "postgresql://", "postgresql+asyncpg://"
-        )
+    # if DATABASE_URL.startswith("postgresql://"):
+    #     DATABASE_URL = DATABASE_URL.replace(
+    #         "postgresql://", "postgresql+asyncpg://"
+    #     )
     # API
     API_V1_PREFIX: str = "/api/v1"
     
