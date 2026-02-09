@@ -3,14 +3,18 @@ Application configuration settings
 """
 from pydantic_settings import BaseSettings
 from typing import Optional
+import os
 
 
 class Settings(BaseSettings):
     """Application settings"""
     
-    # Database
-    DATABASE_URL: str = "sqlite:///./ledger.db"
-    
+    DATABASE_URL = os.getenv("DATABASE_URL")
+
+    if DATABASE_URL.startswith("postgresql://"):
+        DATABASE_URL = DATABASE_URL.replace(
+            "postgresql://", "postgresql+asyncpg://"
+        )
     # API
     API_V1_PREFIX: str = "/api/v1"
     

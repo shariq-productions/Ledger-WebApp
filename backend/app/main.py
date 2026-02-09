@@ -11,6 +11,12 @@ import app.models.admin  # noqa: F401 - ensure Admin table is created
 # Create database tables
 Base.metadata.create_all(bind=engine)
 
+
+@app.on_event("startup")
+def on_startup():
+    Base.metadata.create_all(bind=engine)
+
+
 # Initialize FastAPI app
 app = FastAPI(
     title="Ledger Web Application API",
