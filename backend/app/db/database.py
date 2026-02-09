@@ -23,6 +23,7 @@ def get_db():
     """
     Dependency function to get database session
     """
+    print("Creating new database session")
     db = SessionLocal()
     try:
         yield db

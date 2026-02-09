@@ -18,6 +18,7 @@ class AuthService:
         """
         admin = db.query(Admin).filter(Admin.login_id == login_id).first()
         if not admin:
+            print(f"Admin with login_id '{login_id}' not found.")
             return None
         if not verify_password(password, admin.hashed_password):
             return None
