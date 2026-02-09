@@ -9,7 +9,7 @@ import os
 class Settings(BaseSettings):
     """Application settings"""
     
-    DATABASE_URL = "postgresql://ledger_db_qfgn_user:yS4eB9el29ypopyZm59vy2ssPUzODkyQ@dpg-d655hkp4tr6s73867m4g-a.oregon-postgres.render.com/ledger_db_qfgn"
+    DATABASE_URL:str = "postgresql://ledger_db_qfgn_user:yS4eB9el29ypopyZm59vy2ssPUzODkyQ@dpg-d655hkp4tr6s73867m4g-a.oregon-postgres.render.com/ledger_db_qfgn"
 
     # if DATABASE_URL.startswith("postgresql://"):
     #     DATABASE_URL = DATABASE_URL.replace(
