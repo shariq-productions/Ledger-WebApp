@@ -12,6 +12,7 @@ pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 def verify_password(plain_password: str, hashed_password: str) -> bool:
     """Verify a plain password against a hashed password"""
+    print(f"Verifying password: {plain_password} against hash: {hashed_password}")
     return pwd_context.verify(plain_password, hashed_password)
 
 
