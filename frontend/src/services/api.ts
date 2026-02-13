@@ -1,6 +1,4 @@
-/**
- * API service for backend communication
- */
+
 import axios from 'axios';
 import type { Party, TransactionType, Transaction, OutstandingTotal } from '../types';
 import { getStoredToken, clearStoredToken } from '../utils/authStorage';
@@ -66,7 +64,7 @@ export const transactionTypeAPI = {
     api.post<TransactionType>('/transaction-types/', data),
   update: (id: number, data: Partial<TransactionType>) => 
     api.put<TransactionType>(`/transaction-types/${id}`, data),
-  delete: (id: number) => api.delete(`/t  ransaction-types/${id}`),
+  delete: (id: number) => api.delete(`/transaction-types/${id}`),
 };
 
 // Transaction APIs

@@ -22,7 +22,6 @@ export const OutstandingTotal: React.FC<OutstandingTotalProps> = ({
           date_end: tillDate || undefined,
         })
         .then((res) => res.data),
-    { refetchInterval: 5000 }
   );
 
   const total = data?.total ?? 0;
