@@ -19,7 +19,7 @@ class Settings(BaseSettings):
     API_V1_PREFIX: str = "/api/v1"
     
     # CORS
-    CORS_ORIGINS: list[str] = [
+    CORS_ORIGINS: list[str] = [ 
         "http://localhost:5173",
         "https://ledger-webapp.vercel.app",
         "https://ledger-webapp.onrender.com/api/v1/",
