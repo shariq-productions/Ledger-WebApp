@@ -23,7 +23,7 @@ class Settings(BaseSettings):
         "http://localhost:5173",
         "https://ledger-webapp.vercel.app",
         "https://ledger-webapp.onrender.com/api/v1/",
-        "https://ledger-web-app-six.vercel.app/"
+        "https://ledger-web-app-six.vercel.app"
     ]
     
     # JWT Auth
