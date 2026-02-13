@@ -6,7 +6,7 @@ import type { Party, TransactionType, Transaction, OutstandingTotal } from '../t
 import { getStoredToken, clearStoredToken } from '../utils/authStorage';
 
 // const API_BASE_URL = '/api/v1';
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+const API_BASE_URL = "https://ledger-webapp.onrender.com/api/v1"
 
 
 const api = axios.create({
