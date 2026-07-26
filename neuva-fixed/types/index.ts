@@ -57,3 +57,10 @@ export interface ApiError {
   error: string
   message?: string
 }
+export interface TransactionInput {
+  partyId: number;
+  date: Date;
+  typeId: number;
+  amount: number;
+  transactionNote?: string ;
+}
