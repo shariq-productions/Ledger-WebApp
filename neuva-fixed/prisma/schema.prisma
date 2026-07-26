@@ -1,0 +1,57 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Admin {
+  id             Int      @id @default(autoincrement())
+  loginId        String   @unique
+  hashedPassword String
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+model Party {
+  id           Int           @id @default(autoincrement())
+  name         String
+  billingName  String?
+  location     String?
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  transactions Transaction[]
+
+  @@index([name])
+}
+
+model TransactionType {
+  id           Int           @id @default(autoincrement())
+  note         String
+  type         String // "add" or "reduce"
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  transactions Transaction[]
+
+  @@index([type])
+}
+
+model Transaction {
+  id              Int             @id @default(autoincrement())
+  serialNumber    Int             @unique
+  date            DateTime
+  partyId         Int
+  transactionNote String?
+  typeId          Int
+  amount          Int
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime        @updatedAt
+  party           Party           @relation(fields: [partyId], references: [id], onDelete: Cascade)
+  transactionType TransactionType @relation(fields: [typeId], references: [id], onDelete: Cascade)
+
+  @@index([date])
+  @@index([partyId])
+  @@index([typeId])
+}
