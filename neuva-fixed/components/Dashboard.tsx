@@ -45,16 +45,36 @@ export const Dashboard: React.FC = () => {
     setEditingTransaction(null)
   }
 
-  const handleSubmit = (data: TransactionInput & { date: Date }) => {
-    if (editingTransaction) {
-      updateMutation.mutate(
-        { id: editingTransaction.id, ...data },
-        { onSuccess: handleCloseForm }
-      )
-    } else {
-      createMutation.mutate(data, { onSuccess: handleCloseForm })
-    }
+  // Dashboard.tsx
+const handleSubmit = (data: { 
+  partyId: number; 
+  date: Date; 
+  typeId: number; 
+  amount: number; 
+  transactionNote?: string | null 
+}) => {
+  // Clean the data - remove null values and ensure proper types
+  const cleanData: TransactionInput = {
+    partyId: data.partyId,
+    date: data.date,
+    typeId: data.typeId,
+    amount: data.amount,
+  };
+  
+  // Only include transactionNote if it has a value (not null or undefined)
+  if (data.transactionNote !== null && data.transactionNote !== undefined) {
+    cleanData.transactionNote = data.transactionNote;
   }
+
+  if (editingTransaction) {
+    updateMutation.mutate(
+      { id: editingTransaction.id, ...cleanData },
+      { onSuccess: handleCloseForm }
+    );
+  } else {
+    createMutation.mutate(cleanData, { onSuccess: handleCloseForm });
+  }
+};
 
   if (partiesLoading || typesLoading) {
     return (

@@ -25,13 +25,13 @@ export interface TransactionType {
 export interface Transaction {
   id: number
   serialNumber: number
-  date: string
+  date: Date
   partyId: number
   transactionNote: string | null
   typeId: number
   amount: number
-  createdAt: string
-  updatedAt: string
+  createdAt: Date
+  updatedAt: Date
   party?: Party
   transactionType?: TransactionType
 }
@@ -63,4 +63,10 @@ export interface TransactionInput {
   typeId: number;
   amount: number;
   transactionNote?: string ;
+}
+s
+export interface PartyInput {
+  name: string
+  billingName?: string | null
+  location?: string | null
 }

@@ -19,6 +19,11 @@ export const DashboardFilters: React.FC<DashboardFiltersProps> = ({
   onPartyChange,
   onDateChange,
 }) => {
+  // Handle the DatePicker onChange which gives Date | null
+  const handleDateChange = (date: Date | null) => {
+    onDateChange(date || undefined)
+  }
+
   return (
     <div className="flex flex-wrap gap-4 items-end">
       <div className="flex-1 min-w-[200px]">
@@ -43,7 +48,7 @@ export const DashboardFilters: React.FC<DashboardFiltersProps> = ({
         <label className="form-label">Till Date</label>
         <DatePicker
           selected={selectedDate}
-          onChange={onDateChange}
+          onChange={handleDateChange} // Use the wrapper function
           dateFormat="dd/MM/yyyy"
           className="form-input"
           placeholderText="Select date"

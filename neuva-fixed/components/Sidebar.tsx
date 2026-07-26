@@ -59,15 +59,23 @@ export const Sidebar: React.FC<SidebarProps> = ({
     setEditingType(null)
   }
 
-  const handlePartySubmit = (data: { name: string; billingName?: string | null; location?: string | null }) => {
-    if (editingParty) {
-      updateParty.mutate({ id: editingParty.id, ...data }, { onSuccess: closePartyForm })
-    } else {
-      createParty.mutate(data, { onSuccess: closePartyForm })
-    }
+  // Sidebar.tsx - Updated handlePartySubmit
+const handlePartySubmit = (data: { name: string; billingName?: string | null; location?: string | null }) => {
+  // Convert null values to undefined
+  const cleanedData = {
+    name: data.name,
+    ...(data.billingName !== null && data.billingName !== undefined && { billingName: data.billingName }),
+    ...(data.location !== null && data.location !== undefined && { location: data.location }),
+  };
+  
+  if (editingParty) {
+    updateParty.mutate({ id: editingParty.id, ...cleanedData }, { onSuccess: closePartyForm })
+  } else {
+    createParty.mutate(cleanedData, { onSuccess: closePartyForm })
   }
+}
 
-  const handleTypeSubmit = (data: { note: string; type: 'add' | 'reduce' }) => {
+  const handleTypeSubmit = (data: { note: string  ; type: 'add' | 'reduce' }) => {
     if (editingType) {
       updateType.mutate({ id: editingType.id, ...data }, { onSuccess: closeTypeForm })
     } else {
