@@ -64,7 +64,7 @@ export interface TransactionInput {
   amount: number;
   transactionNote?: string ;
 }
-s
+
 export interface PartyInput {
   name: string
   billingName?: string | null
