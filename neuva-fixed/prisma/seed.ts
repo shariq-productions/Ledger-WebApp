@@ -54,5 +54,6 @@ main()
     process.exit(1)
   })
   .finally(async () => {
+    console.log('Disconnecting from database...')
     await prisma.$disconnect()
   })

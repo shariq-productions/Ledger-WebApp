@@ -1,8 +1,8 @@
-// File: C:\Users\adnan\Music\Self_Projects\ledger-app\Ledger-WebApp\neuva-fixed\app\api\transaction-types\[id]\route.ts
-import * as entry from '../../../../../../app/api/transaction-types/[id]/route.js'
+// File: /Users/apple/Documents/Ledger WebApp/neuva-fixed/app/api/auth/logout/route.ts
+import * as entry from '../../../../../../app/api/auth/logout/route.js'
 import type { NextRequest } from 'next/server.js'
 
-type TEntry = typeof import('../../../../../../app/api/transaction-types/[id]/route.js')
+type TEntry = typeof import('../../../../../../app/api/auth/logout/route.js')
 
 // Check that the entry is a valid entry
 checkFields<Diff<{

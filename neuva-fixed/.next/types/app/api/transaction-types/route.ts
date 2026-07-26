@@ -1,4 +1,4 @@
-// File: C:\Users\adnan\Music\Self_Projects\ledger-app\Ledger-WebApp\neuva-fixed\app\api\transaction-types\route.ts
+// File: /Users/apple/Documents/Ledger WebApp/neuva-fixed/app/api/transaction-types/route.ts
 import * as entry from '../../../../../app/api/transaction-types/route.js'
 import type { NextRequest } from 'next/server.js'
 

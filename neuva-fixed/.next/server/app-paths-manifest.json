@@ -1,7 +1,10 @@
 {
   "/login/page": "app/login/page.js",
   "/page": "app/page.js",
+  "/api/auth/logout/route": "app/api/auth/logout/route.js",
   "/api/transactions/outstanding/total/route": "app/api/transactions/outstanding/total/route.js",
-  "/api/transactions/route": "app/api/transactions/route.js",
-  "/api/transactions/[id]/route": "app/api/transactions/[id]/route.js"
+  "/api/auth/login/route": "app/api/auth/login/route.js",
+  "/api/parties/route": "app/api/parties/route.js",
+  "/api/transaction-types/route": "app/api/transaction-types/route.js",
+  "/api/transactions/route": "app/api/transactions/route.js"
 }

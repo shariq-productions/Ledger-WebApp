@@ -1,4 +1,4 @@
-// File: C:\Users\adnan\Music\Self_Projects\ledger-app\Ledger-WebApp\neuva-fixed\app\api\parties\route.ts
+// File: /Users/apple/Documents/Ledger WebApp/neuva-fixed/app/api/parties/route.ts
 import * as entry from '../../../../../app/api/parties/route.js'
 import type { NextRequest } from 'next/server.js'
 

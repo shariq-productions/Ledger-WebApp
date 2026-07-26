@@ -1,4 +1,4 @@
-// File: C:\Users\adnan\Music\Self_Projects\ledger-app\Ledger-WebApp\neuva-fixed\app\layout.tsx
+// File: /Users/apple/Documents/Ledger WebApp/neuva-fixed/app/layout.tsx
 import * as entry from '../../../app/layout.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
