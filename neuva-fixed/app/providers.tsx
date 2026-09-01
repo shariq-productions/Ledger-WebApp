@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { AuthProvider } from '@/contexts/AuthContext'
 import { Toaster } from 'react-hot-toast'
+import { RandomProvider } from '@/contexts/RandomContext'
 
 export const Providers: React.FC<{ children: React.ReactNode }> = ({
   children,
@@ -23,6 +24,7 @@ export const Providers: React.FC<{ children: React.ReactNode }> = ({
 
   return (
     <QueryClientProvider client={queryClient}>
+      <RandomProvider>
       <AuthProvider>
         {children}
         <Toaster
@@ -36,6 +38,7 @@ export const Providers: React.FC<{ children: React.ReactNode }> = ({
           }}
         />
       </AuthProvider>
+      </RandomProvider>
     </QueryClientProvider>
   )
 }

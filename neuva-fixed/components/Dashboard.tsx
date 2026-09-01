@@ -23,6 +23,7 @@ export const Dashboard: React.FC = () => {
   }>({})
   const [isFormOpen, setIsFormOpen] = useState(false)
   const [editingTransaction, setEditingTransaction] = useState<Transaction | null>(null)
+  const [lastTransactionDate, setLastTransactionDate] = useState<Date | undefined>()
 
   const { data: parties = [], isLoading: partiesLoading } = useParties()
   const { data: transactionTypes = [], isLoading: typesLoading } = useTransactionTypes()
@@ -50,10 +51,20 @@ export const Dashboard: React.FC = () => {
     if (editingTransaction) {
       updateMutation.mutate(
         { id: editingTransaction.id, ...data },
-        { onSuccess: handleCloseForm }
+        {
+          onSuccess: () => {
+            setLastTransactionDate(data.date)
+            handleCloseForm()
+          },
+        }
       )
     } else {
-      createMutation.mutate(data, { onSuccess: handleCloseForm })
+      createMutation.mutate(data, {
+        onSuccess: () => {
+          setLastTransactionDate(data.date)
+          handleCloseForm()
+        },
+      })
     }
   }
 
@@ -116,6 +127,8 @@ export const Dashboard: React.FC = () => {
       >
         <TransactionForm
           initialData={editingTransaction}
+          defaultPartyId={filters.partyId}
+          defaultDate={lastTransactionDate}
           parties={parties}
           transactionTypes={transactionTypes}
           onSubmit={handleSubmit}
