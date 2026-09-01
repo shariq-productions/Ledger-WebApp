@@ -7,12 +7,11 @@ import { Input } from '@/components/ui/Input'
 import { Button } from '@/components/ui/Button'
 import { Party, TransactionType, Transaction } from '@/types'
 import DatePicker from 'react-datepicker'
+
 import 'react-datepicker/dist/react-datepicker.css'
 
 interface TransactionFormProps {
   initialData?: Transaction | null
-  defaultPartyId?: number
-  defaultDate?: Date
   parties: Party[]
   transactionTypes: TransactionType[]
   onSubmit: (data: TransactionInput & { date: Date }) => void
@@ -22,8 +21,6 @@ interface TransactionFormProps {
 
 export const TransactionForm: React.FC<TransactionFormProps> = ({
   initialData,
-  defaultPartyId,
-  defaultDate,
   parties,
   transactionTypes,
   onSubmit,
@@ -39,8 +36,8 @@ export const TransactionForm: React.FC<TransactionFormProps> = ({
   } = useForm<TransactionInput>({
     resolver: zodResolver(TransactionSchema),
     defaultValues: {
-      date: initialData ? new Date(initialData.date) : defaultDate || new Date(),
-      partyId: initialData?.partyId || defaultPartyId || undefined,
+      date: initialData ? new Date(initialData.date) : new Date(),
+      partyId: initialData?.partyId || undefined,
       transactionNote: initialData?.transactionNote || '',
       typeId: initialData?.typeId || undefined,
       amount: initialData?.amount || undefined,

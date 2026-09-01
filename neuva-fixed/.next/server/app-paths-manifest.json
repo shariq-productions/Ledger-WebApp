@@ -1,9 +1,4 @@
 {
   "/page": "app/page.js",
-  "/api/auth/login/route": "app/api/auth/login/route.js",
-  "/login/page": "app/login/page.js",
-  "/api/parties/route": "app/api/parties/route.js",
-  "/api/transactions/route": "app/api/transactions/route.js",
-  "/api/transaction-types/route": "app/api/transaction-types/route.js",
-  "/api/transactions/outstanding/total/route": "app/api/transactions/outstanding/total/route.js"
+  "/login/page": "app/login/page.js"
 }
